@@ -58,8 +58,9 @@ void interrupt interruptions(void){
         if(VSYNC){
             //foto requisitada
             if(requisitar_foto){
-                WRITE_ENABLE = 1;
+                WRITE_ENABLE_NEG = 1;
                 requisitar_foto = 0;
+                finish = 1;
             }                        
             changingLed_VSYNC = ~changingLed_VSYNC;
             LED_VSYNC = changingLed_VSYNC;
@@ -69,11 +70,11 @@ void interrupt interruptions(void){
             //OQ DEVO FAZER SE A FIFO ENCHER????
             //TODO
             LED_FIFO_FULL = 1;
-            READ_RESET = 1;
-            WRITE_RESET = 1;
+            READ_RESET_NEG = 1;
+            WRITE_RESET_NEG = 1;
             __delay_ms(20);
-            READ_RESET = 0;
-            WRITE_RESET = 0;
+            READ_RESET_NEG = 0;
+            WRITE_RESET_NEG = 0;
             LED_FIFO_FULL = 0;
         }
         INTCONbits.RBIF = 0;        
@@ -105,7 +106,7 @@ void writeOV7670_I2c(){
     I2C_Idle(); //Verifica e aguarda até o barramento I2C estar disponível.
     I2C_Write_Byte(0x04); // Inicializa com mês 04
     I2C_Idle(); //Verifica e aguarda até o barramento I2C estar disponível.
-    I2C_Write_Byte(0x13); // Inicializa com ano 13
+    I2C_Write_Byte(REG_00_GAIN); // Inicializa com ano 13
     I2C_Idle(); //Verifica e aguarda até o barramento I2C estar disponível.
     
     I2C_Stop(); //Finaliza a comunicação I2c
@@ -120,16 +121,17 @@ void configPortBInterrupt(){
 }
 
 void configPinsOV7670(){
-    WRITE_RESET = 1;            //RESETA O BUFFER DE ESCRITA
-    READ_RESET = 1;             //RESETA O BUFFER DE LEITURA
-    WRITE_ENABLE = 0;           //NÃO PODE ESCREVER NA FIFO AINDA
-    READ_ENABLE = 1;            //PODE LER DA FIFO
+    OUTPUT_ENABLE_NEG = 0;      //OUTPUT ENABLE LIGA SAÍDA EM 0
+    WRITE_RESET_NEG = 1;        //RESETA O BUFFER DE ESCRITA
+    READ_RESET_NEG = 1;         //RESETA O BUFFER DE LEITURA
+    WRITE_ENABLE_NEG = 0;       //NÃO PODE ESCREVER NA FIFO AINDA
+    READ_ENABLE_NEG = 1;        //PODE LER DA FIFO
     READ_CLOCK = 0;             //CLOCK 0
     LED_FINISH_FRAME = 0;       //NÃO TERMINOU NENHUM FRAME
     LED_VSYNC = 0;              //NÃO RECEBEU NENHUM VSYNC
     __delay_us(10);
-    WRITE_RESET = 0;
-    READ_RESET = 0;
+    WRITE_RESET_NEG = 0;
+    READ_RESET_NEG = 0;
 }
 
 void main(void){
@@ -146,11 +148,10 @@ void main(void){
     TRISCbits.RC0 = 0;      //READ RESET
     TRISEbits.RE0 = 0;      //WRITE RESET
     TRISEbits.RE1 = 0;      //LED FIFO FULL
-    
+    TRISEbits.RE2 = 0;      //OUTPUT ENABLE
     //PORTD, PIXEL
-    TRISD = 0;              //TUDO ENTRADA DO PIXEL
-    
-    
+    TRISD = 0xFF;           //TUDO ENTRADA DO PIXEL
+        
     //timer
     configTimer();
     setMaxContCycle(30);
@@ -182,10 +183,10 @@ void main(void){
             putch(data);            
         }
         //FIFO ESTÁ VAZIA, NÃO TEM PIXEL
-        if(EMPTY){
+        if(EMPTY == 1 && finish == 1){
             LED_FINISH_FRAME = 1;
             __delay_ms(10);
-        }                        
+        }
         //CONTADOR PARA REQUISITAR IMAGEM
         if(val == maxContCycle){
             //REQUISITAR FOTO

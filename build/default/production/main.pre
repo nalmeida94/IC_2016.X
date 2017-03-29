@@ -5622,6 +5622,7 @@ if(PORTBbits.RB7){
 if(requisitar_foto){
 PORTBbits.RB4 = 1;
 requisitar_foto = 0;
+finish = 1;
 }
 changingLed_VSYNC = ~changingLed_VSYNC;
 PORTBbits.RB6 = changingLed_VSYNC;
@@ -5667,7 +5668,7 @@ I2C_Write_Byte(0x17);
 I2C_Idle();
 I2C_Write_Byte(0x04);
 I2C_Idle();
-I2C_Write_Byte(0x13);
+I2C_Write_Byte(0X00);
 I2C_Idle();
 
 I2C_Stop();
@@ -5682,6 +5683,7 @@ INTCONbits.PEIE = 1;
 }
 
 void configPinsOV7670(){
+PORTEbits.RE2 = 0;
 PORTEbits.RE0 = 1;
 PORTCbits.RC0 = 1;
 PORTBbits.RB4 = 0;
@@ -5708,10 +5710,9 @@ TRISCbits.RC1 = 0;
 TRISCbits.RC0 = 0;
 TRISEbits.RE0 = 0;
 TRISEbits.RE1 = 0;
+TRISEbits.RE2 = 0;
 
-
-TRISD = 0;
-
+TRISD = 0xFF;
 
 
 configTimer();
@@ -5744,7 +5745,7 @@ data = PORTD;
 putch(data);
 }
 
-if(PORTBbits.RB3){
+if(PORTBbits.RB3 == 1 && finish == 1){
 PORTBbits.RB2 = 1;
 _delay((unsigned long)((10)*(20000000/4000.0)));
 }

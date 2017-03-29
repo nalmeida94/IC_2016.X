@@ -39,15 +39,15 @@
 [v _I2C_Idle I2C_Idle `(v  1 e 0 0 ]
 "39 D:\Workspaces\MPLABXProjects\IC_2016.X\main.c
 [v _interruptions interruptions `II(v  1 e 0 0 ]
-"83
+"84
 [v _setMaxContCycle setMaxContCycle `(v  1 e 0 0 ]
-"87
+"88
 [v _writeOV7670_I2c writeOV7670_I2c `(v  1 e 0 0 ]
-"115
+"116
 [v _configPortBInterrupt configPortBInterrupt `(v  1 e 0 0 ]
-"122
+"123
 [v _configPinsOV7670 configPinsOV7670 `(v  1 e 0 0 ]
-"135
+"137
 [v _main main `(v  1 e 0 0 ]
 "19 D:\Workspaces\MPLABXProjects\IC_2016.X\timer0.c
 [v _configTimer configTimer `(v  1 e 0 0 ]
@@ -577,19 +577,21 @@
 [v _changingLed_VSYNC changingLed_VSYNC `b  1 e 0 0 ]
 "26
 [v _data data `uc  1 e 1 0 ]
+"30
+[v _finish finish `b  1 e 0 0 ]
 "32
 [v _requisitar_foto requisitar_foto `b  1 e 0 0 ]
 "8 D:\Workspaces\MPLABXProjects\IC_2016.X\timer0.h
 [v _Timer0_SecondsInACycle Timer0_SecondsInACycle `f  1 e 3 0 ]
-"135 D:\Workspaces\MPLABXProjects\IC_2016.X\main.c
+"137 D:\Workspaces\MPLABXProjects\IC_2016.X\main.c
 [v _main main `(v  1 e 0 0 ]
 {
-"196
+"197
 } 0
-"87
+"88
 [v _writeOV7670_I2c writeOV7670_I2c `(v  1 e 0 0 ]
 {
-"112
+"113
 } 0
 "82 D:\Workspaces\MPLABXProjects\IC_2016.X\i2c.c
 [v _I2C_Write_Byte I2C_Write_Byte `(b  1 e 0 0 ]
@@ -615,11 +617,11 @@
 {
 "103
 } 0
-"83 D:\Workspaces\MPLABXProjects\IC_2016.X\main.c
+"84 D:\Workspaces\MPLABXProjects\IC_2016.X\main.c
 [v _setMaxContCycle setMaxContCycle `(v  1 e 0 0 ]
 {
 [v setMaxContCycle@secondsInACycle secondsInACycle `us  1 p 2 56 ]
-"85
+"86
 } 0
 "28 C:\Program Files (x86)\Microchip\xc8\v1.35\sources\common\lwtoft.c
 [v ___lwtoft __lwtoft `(f  1 e 3 0 ]
@@ -684,15 +686,15 @@
 {
 "30
 } 0
-"115 D:\Workspaces\MPLABXProjects\IC_2016.X\main.c
+"116 D:\Workspaces\MPLABXProjects\IC_2016.X\main.c
 [v _configPortBInterrupt configPortBInterrupt `(v  1 e 0 0 ]
 {
-"120
+"121
 } 0
-"122
+"123
 [v _configPinsOV7670 configPinsOV7670 `(v  1 e 0 0 ]
 {
-"133
+"135
 } 0
 "4 D:\Workspaces\MPLABXProjects\IC_2016.X\i2c.c
 [v _InitI2C_Master InitI2C_Master `(v  1 e 0 0 ]
@@ -702,5 +704,5 @@
 "39 D:\Workspaces\MPLABXProjects\IC_2016.X\main.c
 [v _interruptions interruptions `II(v  1 e 0 0 ]
 {
-"81
+"82
 } 0

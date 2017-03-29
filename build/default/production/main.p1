@@ -4643,344 +4643,353 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;main.c: 62: requisitar_foto = 0;
 "62
 [e = _requisitar_foto -> -> 0 `i `b ]
+[; ;main.c: 63: finish = 1;
 "63
+[e = _finish -> -> 1 `i `b ]
+"64
 }
 [e :U 564 ]
-[; ;main.c: 63: }
-[; ;main.c: 64: changingLed_VSYNC = ~changingLed_VSYNC;
-"64
-[e = _changingLed_VSYNC -> ~ -> _changingLed_VSYNC `ui `b ]
-[; ;main.c: 65: PORTBbits.RB6 = changingLed_VSYNC;
+[; ;main.c: 64: }
+[; ;main.c: 65: changingLed_VSYNC = ~changingLed_VSYNC;
 "65
-[e = . . _PORTBbits 0 6 -> -> _changingLed_VSYNC `i `uc ]
+[e = _changingLed_VSYNC -> ~ -> _changingLed_VSYNC `ui `b ]
+[; ;main.c: 66: PORTBbits.RB6 = changingLed_VSYNC;
 "66
+[e = . . _PORTBbits 0 6 -> -> _changingLed_VSYNC `i `uc ]
+"67
 }
 [e :U 563 ]
-[; ;main.c: 66: }
-[; ;main.c: 68: if(PORTBbits.RB5){
-"68
+[; ;main.c: 67: }
+[; ;main.c: 69: if(PORTBbits.RB5){
+"69
 [e $ ! != -> . . _PORTBbits 0 5 `i -> -> -> 0 `i `Vuc `i 565  ]
 {
-[; ;main.c: 71: PORTEbits.RE1 = 1;
-"71
-[e = . . _PORTEbits 0 1 -> -> 1 `i `uc ]
-[; ;main.c: 72: PORTCbits.RC0 = 1;
+[; ;main.c: 72: PORTEbits.RE1 = 1;
 "72
-[e = . . _PORTCbits 0 0 -> -> 1 `i `uc ]
-[; ;main.c: 73: PORTEbits.RE0 = 1;
+[e = . . _PORTEbits 0 1 -> -> 1 `i `uc ]
+[; ;main.c: 73: PORTCbits.RC0 = 1;
 "73
-[e = . . _PORTEbits 0 0 -> -> 1 `i `uc ]
-[; ;main.c: 74: _delay((unsigned long)((20)*(20000000/4000.0)));
+[e = . . _PORTCbits 0 0 -> -> 1 `i `uc ]
+[; ;main.c: 74: PORTEbits.RE0 = 1;
 "74
-[e ( __delay (1 -> * -> -> 20 `i `d / -> -> 20000000 `l `d .4000.0 `ul ]
-[; ;main.c: 75: PORTCbits.RC0 = 0;
+[e = . . _PORTEbits 0 0 -> -> 1 `i `uc ]
+[; ;main.c: 75: _delay((unsigned long)((20)*(20000000/4000.0)));
 "75
-[e = . . _PORTCbits 0 0 -> -> 0 `i `uc ]
-[; ;main.c: 76: PORTEbits.RE0 = 0;
+[e ( __delay (1 -> * -> -> 20 `i `d / -> -> 20000000 `l `d .4000.0 `ul ]
+[; ;main.c: 76: PORTCbits.RC0 = 0;
 "76
-[e = . . _PORTEbits 0 0 -> -> 0 `i `uc ]
-[; ;main.c: 77: PORTEbits.RE1 = 0;
+[e = . . _PORTCbits 0 0 -> -> 0 `i `uc ]
+[; ;main.c: 77: PORTEbits.RE0 = 0;
 "77
-[e = . . _PORTEbits 0 1 -> -> 0 `i `uc ]
+[e = . . _PORTEbits 0 0 -> -> 0 `i `uc ]
+[; ;main.c: 78: PORTEbits.RE1 = 0;
 "78
+[e = . . _PORTEbits 0 1 -> -> 0 `i `uc ]
+"79
 }
 [e :U 565 ]
-[; ;main.c: 78: }
-[; ;main.c: 79: INTCONbits.RBIF = 0;
-"79
-[e = . . _INTCONbits 0 0 -> -> 0 `i `uc ]
+[; ;main.c: 79: }
+[; ;main.c: 80: INTCONbits.RBIF = 0;
 "80
+[e = . . _INTCONbits 0 0 -> -> 0 `i `uc ]
+"81
 }
 [e :U 562 ]
-[; ;main.c: 80: }
 [; ;main.c: 81: }
-"81
+[; ;main.c: 82: }
+"82
 [e :UE 558 ]
 }
-"83
+"84
 [v _setMaxContCycle `(v ~T0 @X0 1 ef1`us ]
 {
-[; ;main.c: 83: void setMaxContCycle(unsigned short int secondsInACycle){
+[; ;main.c: 84: void setMaxContCycle(unsigned short int secondsInACycle){
 [e :U _setMaxContCycle ]
 [v _secondsInACycle `us ~T0 @X0 1 r1 ]
 [f ]
-[; ;main.c: 84: maxContCycle = (int)(secondsInACycle/Timer0_SecondsInACycle);
-"84
-[e = _maxContCycle -> -> / -> _secondsInACycle `f _Timer0_SecondsInACycle `i `us ]
-[; ;main.c: 85: }
+[; ;main.c: 85: maxContCycle = (int)(secondsInACycle/Timer0_SecondsInACycle);
 "85
+[e = _maxContCycle -> -> / -> _secondsInACycle `f _Timer0_SecondsInACycle `i `us ]
+[; ;main.c: 86: }
+"86
 [e :UE 566 ]
 }
-"87
+"88
 [v _writeOV7670_I2c `(v ~T0 @X0 1 ef ]
 {
-[; ;main.c: 87: void writeOV7670_I2c(){
+[; ;main.c: 88: void writeOV7670_I2c(){
 [e :U _writeOV7670_I2c ]
 [f ]
-[; ;main.c: 88: I2C_Idle();
-"88
-[e ( _I2C_Idle ..  ]
-[; ;main.c: 89: I2C_Start();
+[; ;main.c: 89: I2C_Idle();
 "89
+[e ( _I2C_Idle ..  ]
+[; ;main.c: 90: I2C_Start();
+"90
 [e ( _I2C_Start ..  ]
-[; ;main.c: 91: I2C_Idle();
-"91
-[e ( _I2C_Idle ..  ]
-[; ;main.c: 92: I2C_Write_Byte(0xD0);
+[; ;main.c: 92: I2C_Idle();
 "92
-[e ( _I2C_Write_Byte (1 -> -> 208 `i `uc ]
-[; ;main.c: 93: I2C_Idle();
+[e ( _I2C_Idle ..  ]
+[; ;main.c: 93: I2C_Write_Byte(0xD0);
 "93
-[e ( _I2C_Idle ..  ]
-[; ;main.c: 94: I2C_Write_Byte(0x00);
+[e ( _I2C_Write_Byte (1 -> -> 208 `i `uc ]
+[; ;main.c: 94: I2C_Idle();
 "94
-[e ( _I2C_Write_Byte (1 -> -> 0 `i `uc ]
-[; ;main.c: 95: I2C_Idle();
+[e ( _I2C_Idle ..  ]
+[; ;main.c: 95: I2C_Write_Byte(0x00);
 "95
-[e ( _I2C_Idle ..  ]
-[; ;main.c: 96: I2C_Write_Byte(0x00);
-"96
 [e ( _I2C_Write_Byte (1 -> -> 0 `i `uc ]
-[; ;main.c: 97: I2C_Idle();
+[; ;main.c: 96: I2C_Idle();
+"96
+[e ( _I2C_Idle ..  ]
+[; ;main.c: 97: I2C_Write_Byte(0x00);
 "97
-[e ( _I2C_Idle ..  ]
-[; ;main.c: 98: I2C_Write_Byte(0x08);
+[e ( _I2C_Write_Byte (1 -> -> 0 `i `uc ]
+[; ;main.c: 98: I2C_Idle();
 "98
-[e ( _I2C_Write_Byte (1 -> -> 8 `i `uc ]
-[; ;main.c: 99: I2C_Idle();
+[e ( _I2C_Idle ..  ]
+[; ;main.c: 99: I2C_Write_Byte(0x08);
 "99
-[e ( _I2C_Idle ..  ]
-[; ;main.c: 100: I2C_Write_Byte(0x08);
-"100
 [e ( _I2C_Write_Byte (1 -> -> 8 `i `uc ]
-[; ;main.c: 101: I2C_Idle();
+[; ;main.c: 100: I2C_Idle();
+"100
+[e ( _I2C_Idle ..  ]
+[; ;main.c: 101: I2C_Write_Byte(0x08);
 "101
-[e ( _I2C_Idle ..  ]
-[; ;main.c: 102: I2C_Write_Byte(0x04);
+[e ( _I2C_Write_Byte (1 -> -> 8 `i `uc ]
+[; ;main.c: 102: I2C_Idle();
 "102
-[e ( _I2C_Write_Byte (1 -> -> 4 `i `uc ]
-[; ;main.c: 103: I2C_Idle();
+[e ( _I2C_Idle ..  ]
+[; ;main.c: 103: I2C_Write_Byte(0x04);
 "103
-[e ( _I2C_Idle ..  ]
-[; ;main.c: 104: I2C_Write_Byte(0x17);
-"104
-[e ( _I2C_Write_Byte (1 -> -> 23 `i `uc ]
-[; ;main.c: 105: I2C_Idle();
-"105
-[e ( _I2C_Idle ..  ]
-[; ;main.c: 106: I2C_Write_Byte(0x04);
-"106
 [e ( _I2C_Write_Byte (1 -> -> 4 `i `uc ]
-[; ;main.c: 107: I2C_Idle();
+[; ;main.c: 104: I2C_Idle();
+"104
+[e ( _I2C_Idle ..  ]
+[; ;main.c: 105: I2C_Write_Byte(0x17);
+"105
+[e ( _I2C_Write_Byte (1 -> -> 23 `i `uc ]
+[; ;main.c: 106: I2C_Idle();
+"106
+[e ( _I2C_Idle ..  ]
+[; ;main.c: 107: I2C_Write_Byte(0x04);
 "107
-[e ( _I2C_Idle ..  ]
-[; ;main.c: 108: I2C_Write_Byte(0x13);
+[e ( _I2C_Write_Byte (1 -> -> 4 `i `uc ]
+[; ;main.c: 108: I2C_Idle();
 "108
-[e ( _I2C_Write_Byte (1 -> -> 19 `i `uc ]
-[; ;main.c: 109: I2C_Idle();
-"109
 [e ( _I2C_Idle ..  ]
-[; ;main.c: 111: I2C_Stop();
-"111
-[e ( _I2C_Stop ..  ]
-[; ;main.c: 112: }
+[; ;main.c: 109: I2C_Write_Byte(0X00);
+"109
+[e ( _I2C_Write_Byte (1 -> -> 0 `i `uc ]
+[; ;main.c: 110: I2C_Idle();
+"110
+[e ( _I2C_Idle ..  ]
+[; ;main.c: 112: I2C_Stop();
 "112
+[e ( _I2C_Stop ..  ]
+[; ;main.c: 113: }
+"113
 [e :UE 567 ]
 }
-"115
+"116
 [v _configPortBInterrupt `(v ~T0 @X0 1 ef ]
 {
-[; ;main.c: 115: void configPortBInterrupt(){
+[; ;main.c: 116: void configPortBInterrupt(){
 [e :U _configPortBInterrupt ]
 [f ]
-[; ;main.c: 116: INTCONbits.RBIE = 1;
-"116
-[e = . . _INTCONbits 0 3 -> -> 1 `i `uc ]
-[; ;main.c: 117: INTCONbits.RBIF = 0;
+[; ;main.c: 117: INTCONbits.RBIE = 1;
 "117
-[e = . . _INTCONbits 0 0 -> -> 0 `i `uc ]
-[; ;main.c: 118: INTCONbits.GIE = 1;
+[e = . . _INTCONbits 0 3 -> -> 1 `i `uc ]
+[; ;main.c: 118: INTCONbits.RBIF = 0;
 "118
-[e = . . _INTCONbits 1 7 -> -> 1 `i `uc ]
-[; ;main.c: 119: INTCONbits.PEIE = 1;
+[e = . . _INTCONbits 0 0 -> -> 0 `i `uc ]
+[; ;main.c: 119: INTCONbits.GIE = 1;
 "119
-[e = . . _INTCONbits 1 6 -> -> 1 `i `uc ]
-[; ;main.c: 120: }
+[e = . . _INTCONbits 1 7 -> -> 1 `i `uc ]
+[; ;main.c: 120: INTCONbits.PEIE = 1;
 "120
+[e = . . _INTCONbits 1 6 -> -> 1 `i `uc ]
+[; ;main.c: 121: }
+"121
 [e :UE 568 ]
 }
-"122
+"123
 [v _configPinsOV7670 `(v ~T0 @X0 1 ef ]
 {
-[; ;main.c: 122: void configPinsOV7670(){
+[; ;main.c: 123: void configPinsOV7670(){
 [e :U _configPinsOV7670 ]
 [f ]
-[; ;main.c: 123: PORTEbits.RE0 = 1;
-"123
-[e = . . _PORTEbits 0 0 -> -> 1 `i `uc ]
-[; ;main.c: 124: PORTCbits.RC0 = 1;
+[; ;main.c: 124: PORTEbits.RE2 = 0;
 "124
-[e = . . _PORTCbits 0 0 -> -> 1 `i `uc ]
-[; ;main.c: 125: PORTBbits.RB4 = 0;
+[e = . . _PORTEbits 0 2 -> -> 0 `i `uc ]
+[; ;main.c: 125: PORTEbits.RE0 = 1;
 "125
-[e = . . _PORTBbits 0 4 -> -> 0 `i `uc ]
-[; ;main.c: 126: PORTCbits.RC2 = 1;
+[e = . . _PORTEbits 0 0 -> -> 1 `i `uc ]
+[; ;main.c: 126: PORTCbits.RC0 = 1;
 "126
-[e = . . _PORTCbits 0 2 -> -> 1 `i `uc ]
-[; ;main.c: 127: PORTCbits.RC1 = 0;
+[e = . . _PORTCbits 0 0 -> -> 1 `i `uc ]
+[; ;main.c: 127: PORTBbits.RB4 = 0;
 "127
-[e = . . _PORTCbits 0 1 -> -> 0 `i `uc ]
-[; ;main.c: 128: PORTBbits.RB2 = 0;
+[e = . . _PORTBbits 0 4 -> -> 0 `i `uc ]
+[; ;main.c: 128: PORTCbits.RC2 = 1;
 "128
-[e = . . _PORTBbits 0 2 -> -> 0 `i `uc ]
-[; ;main.c: 129: PORTBbits.RB6 = 0;
+[e = . . _PORTCbits 0 2 -> -> 1 `i `uc ]
+[; ;main.c: 129: PORTCbits.RC1 = 0;
 "129
-[e = . . _PORTBbits 0 6 -> -> 0 `i `uc ]
-[; ;main.c: 130: _delay((unsigned long)((10)*(20000000/4000000.0)));
+[e = . . _PORTCbits 0 1 -> -> 0 `i `uc ]
+[; ;main.c: 130: PORTBbits.RB2 = 0;
 "130
-[e ( __delay (1 -> * -> -> 10 `i `d / -> -> 20000000 `l `d .4000000.0 `ul ]
-[; ;main.c: 131: PORTEbits.RE0 = 0;
+[e = . . _PORTBbits 0 2 -> -> 0 `i `uc ]
+[; ;main.c: 131: PORTBbits.RB6 = 0;
 "131
-[e = . . _PORTEbits 0 0 -> -> 0 `i `uc ]
-[; ;main.c: 132: PORTCbits.RC0 = 0;
+[e = . . _PORTBbits 0 6 -> -> 0 `i `uc ]
+[; ;main.c: 132: _delay((unsigned long)((10)*(20000000/4000000.0)));
 "132
-[e = . . _PORTCbits 0 0 -> -> 0 `i `uc ]
-[; ;main.c: 133: }
+[e ( __delay (1 -> * -> -> 10 `i `d / -> -> 20000000 `l `d .4000000.0 `ul ]
+[; ;main.c: 133: PORTEbits.RE0 = 0;
 "133
+[e = . . _PORTEbits 0 0 -> -> 0 `i `uc ]
+[; ;main.c: 134: PORTCbits.RC0 = 0;
+"134
+[e = . . _PORTCbits 0 0 -> -> 0 `i `uc ]
+[; ;main.c: 135: }
+"135
 [e :UE 569 ]
 }
-"135
+"137
 [v _main `(v ~T0 @X0 1 ef ]
 {
-[; ;main.c: 135: void main(void){
+[; ;main.c: 137: void main(void){
 [e :U _main ]
 [f ]
-[; ;main.c: 137: TRISBbits.RB7 = 1;
-"137
-[e = . . _TRISBbits 1 7 -> -> 1 `i `uc ]
-[; ;main.c: 138: TRISBbits.RB6 = 0;
-"138
-[e = . . _TRISBbits 1 6 -> -> 0 `i `uc ]
-[; ;main.c: 139: TRISBbits.RB5 = 1;
+[; ;main.c: 139: TRISBbits.RB7 = 1;
 "139
-[e = . . _TRISBbits 1 5 -> -> 1 `i `uc ]
-[; ;main.c: 140: TRISBbits.RB4 = 0;
+[e = . . _TRISBbits 1 7 -> -> 1 `i `uc ]
+[; ;main.c: 140: TRISBbits.RB6 = 0;
 "140
-[e = . . _TRISBbits 1 4 -> -> 0 `i `uc ]
-[; ;main.c: 142: TRISBbits.RB3 = 1;
+[e = . . _TRISBbits 1 6 -> -> 0 `i `uc ]
+[; ;main.c: 141: TRISBbits.RB5 = 1;
+"141
+[e = . . _TRISBbits 1 5 -> -> 1 `i `uc ]
+[; ;main.c: 142: TRISBbits.RB4 = 0;
 "142
-[e = . . _TRISBbits 1 3 -> -> 1 `i `uc ]
-[; ;main.c: 143: TRISBbits.RB2 = 0;
-"143
-[e = . . _TRISBbits 1 2 -> -> 0 `i `uc ]
-[; ;main.c: 144: TRISCbits.RC2 = 0;
+[e = . . _TRISBbits 1 4 -> -> 0 `i `uc ]
+[; ;main.c: 144: TRISBbits.RB3 = 1;
 "144
-[e = . . _TRISCbits 1 2 -> -> 0 `i `uc ]
-[; ;main.c: 145: TRISCbits.RC1 = 0;
+[e = . . _TRISBbits 1 3 -> -> 1 `i `uc ]
+[; ;main.c: 145: TRISBbits.RB2 = 0;
 "145
-[e = . . _TRISCbits 1 1 -> -> 0 `i `uc ]
-[; ;main.c: 146: TRISCbits.RC0 = 0;
+[e = . . _TRISBbits 1 2 -> -> 0 `i `uc ]
+[; ;main.c: 146: TRISCbits.RC2 = 0;
 "146
-[e = . . _TRISCbits 1 0 -> -> 0 `i `uc ]
-[; ;main.c: 147: TRISEbits.RE0 = 0;
+[e = . . _TRISCbits 1 2 -> -> 0 `i `uc ]
+[; ;main.c: 147: TRISCbits.RC1 = 0;
 "147
-[e = . . _TRISEbits 1 0 -> -> 0 `i `uc ]
-[; ;main.c: 148: TRISEbits.RE1 = 0;
+[e = . . _TRISCbits 1 1 -> -> 0 `i `uc ]
+[; ;main.c: 148: TRISCbits.RC0 = 0;
 "148
+[e = . . _TRISCbits 1 0 -> -> 0 `i `uc ]
+[; ;main.c: 149: TRISEbits.RE0 = 0;
+"149
+[e = . . _TRISEbits 1 0 -> -> 0 `i `uc ]
+[; ;main.c: 150: TRISEbits.RE1 = 0;
+"150
 [e = . . _TRISEbits 1 1 -> -> 0 `i `uc ]
-[; ;main.c: 151: TRISD = 0;
+[; ;main.c: 151: TRISEbits.RE2 = 0;
 "151
-[e = _TRISD -> -> 0 `i `uc ]
-[; ;main.c: 155: configTimer();
-"155
-[e ( _configTimer ..  ]
-[; ;main.c: 156: setMaxContCycle(30);
+[e = . . _TRISEbits 1 2 -> -> 0 `i `uc ]
+[; ;main.c: 153: TRISD = 0xFF;
+"153
+[e = _TRISD -> -> 255 `i `uc ]
+[; ;main.c: 156: configTimer();
 "156
+[e ( _configTimer ..  ]
+[; ;main.c: 157: setMaxContCycle(30);
+"157
 [e ( _setMaxContCycle (1 -> -> 30 `i `us ]
-[; ;main.c: 159: configRS232();
-"159
-[e ( _configRS232 ..  ]
-[; ;main.c: 160: configUSARTInterrupts();
+[; ;main.c: 160: configRS232();
 "160
+[e ( _configRS232 ..  ]
+[; ;main.c: 161: configUSARTInterrupts();
+"161
 [e ( _configUSARTInterrupts ..  ]
-[; ;main.c: 163: InitI2C_Master();
-"163
+[; ;main.c: 164: InitI2C_Master();
+"164
 [e ( _InitI2C_Master ..  ]
-[; ;main.c: 166: configPortBInterrupt();
-"166
+[; ;main.c: 167: configPortBInterrupt();
+"167
 [e ( _configPortBInterrupt ..  ]
-[; ;main.c: 169: writeOV7670_I2c();
-"169
-[e ( _writeOV7670_I2c ..  ]
-[; ;main.c: 170: configPinsOV7670();
+[; ;main.c: 170: writeOV7670_I2c();
 "170
+[e ( _writeOV7670_I2c ..  ]
+[; ;main.c: 171: configPinsOV7670();
+"171
 [e ( _configPinsOV7670 ..  ]
-[; ;main.c: 172: while(1){
-"172
+[; ;main.c: 173: while(1){
+"173
 [e :U 572 ]
 {
-[; ;main.c: 174: if(!PORTBbits.RB3){
-"174
+[; ;main.c: 175: if(!PORTBbits.RB3){
+"175
 [e $ ! ! != -> . . _PORTBbits 0 3 `i -> -> -> 0 `i `Vuc `i 574  ]
 {
-[; ;main.c: 176: _delay((unsigned long)((1)*(20000000/4000000.0)));
-"176
-[e ( __delay (1 -> * -> -> 1 `i `d / -> -> 20000000 `l `d .4000000.0 `ul ]
-[; ;main.c: 177: PORTCbits.RC1 = 1;
+[; ;main.c: 177: _delay((unsigned long)((1)*(20000000/4000000.0)));
 "177
-[e = . . _PORTCbits 0 1 -> -> 1 `i `uc ]
-[; ;main.c: 178: _delay((unsigned long)((1)*(20000000/4000000.0)));
-"178
 [e ( __delay (1 -> * -> -> 1 `i `d / -> -> 20000000 `l `d .4000000.0 `ul ]
-[; ;main.c: 179: PORTCbits.RC1 = 0;
+[; ;main.c: 178: PORTCbits.RC1 = 1;
+"178
+[e = . . _PORTCbits 0 1 -> -> 1 `i `uc ]
+[; ;main.c: 179: _delay((unsigned long)((1)*(20000000/4000000.0)));
 "179
+[e ( __delay (1 -> * -> -> 1 `i `d / -> -> 20000000 `l `d .4000000.0 `ul ]
+[; ;main.c: 180: PORTCbits.RC1 = 0;
+"180
 [e = . . _PORTCbits 0 1 -> -> 0 `i `uc ]
-[; ;main.c: 181: data = PORTD;
-"181
-[e = _data _PORTD ]
-[; ;main.c: 182: putch(data);
+[; ;main.c: 182: data = PORTD;
 "182
-[e ( _putch (1 _data ]
+[e = _data _PORTD ]
+[; ;main.c: 183: putch(data);
 "183
+[e ( _putch (1 _data ]
+"184
 }
 [e :U 574 ]
-[; ;main.c: 183: }
-[; ;main.c: 185: if(PORTBbits.RB3){
-"185
-[e $ ! != -> . . _PORTBbits 0 3 `i -> -> -> 0 `i `Vuc `i 575  ]
-{
-[; ;main.c: 186: PORTBbits.RB2 = 1;
+[; ;main.c: 184: }
+[; ;main.c: 186: if(PORTBbits.RB3 == 1 && finish == 1){
 "186
-[e = . . _PORTBbits 0 2 -> -> 1 `i `uc ]
-[; ;main.c: 187: _delay((unsigned long)((10)*(20000000/4000.0)));
+[e $ ! && == -> . . _PORTBbits 0 3 `i -> 1 `i == -> _finish `i -> 1 `i 575  ]
+{
+[; ;main.c: 187: PORTBbits.RB2 = 1;
 "187
-[e ( __delay (1 -> * -> -> 10 `i `d / -> -> 20000000 `l `d .4000.0 `ul ]
+[e = . . _PORTBbits 0 2 -> -> 1 `i `uc ]
+[; ;main.c: 188: _delay((unsigned long)((10)*(20000000/4000.0)));
 "188
+[e ( __delay (1 -> * -> -> 10 `i `d / -> -> 20000000 `l `d .4000.0 `ul ]
+"189
 }
 [e :U 575 ]
-[; ;main.c: 188: }
-[; ;main.c: 190: if(val == maxContCycle){
-"190
+[; ;main.c: 189: }
+[; ;main.c: 191: if(val == maxContCycle){
+"191
 [e $ ! == -> _val `ui -> _maxContCycle `ui 576  ]
 {
-[; ;main.c: 192: requisitar_foto = 1;
-"192
-[e = _requisitar_foto -> -> 1 `i `b ]
-[; ;main.c: 193: val = 0;
+[; ;main.c: 193: requisitar_foto = 1;
 "193
-[e = _val -> -> 0 `i `us ]
+[e = _requisitar_foto -> -> 1 `i `b ]
+[; ;main.c: 194: val = 0;
 "194
-}
-[e :U 576 ]
+[e = _val -> -> 0 `i `us ]
 "195
 }
+[e :U 576 ]
+"196
+}
 [e :U 571 ]
-"172
+"173
 [e $U 572  ]
 [e :U 573 ]
-[; ;main.c: 194: }
 [; ;main.c: 195: }
 [; ;main.c: 196: }
-"196
+[; ;main.c: 197: }
+"197
 [e :UE 570 ]
 }
